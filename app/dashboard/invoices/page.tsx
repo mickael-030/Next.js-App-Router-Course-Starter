@@ -16,7 +16,7 @@ export default async function Page(
 ) {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || '';
-  const currentPage = Number(searchParams?.page);
+  const currentPage = Number(searchParams?.page) || 1;
 
   return (
     <div className="w-full">
