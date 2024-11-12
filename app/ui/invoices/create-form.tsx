@@ -123,17 +123,17 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
           </div>
           <div id="invoice-status-error" aria-live='polite' aria-atomic='true'>
             {state.errors?.status &&
-              state.errors.status.map((error: string) => (
-              <p className="mt-2 text-sm text-red-500" key={error}>
-                {error}
-              </p>
-              ))}
-            </div>
+            state.errors.status.map((error: string) => (
+            <p className="mt-2 text-sm text-red-500" key={error}>
+              {error}
+            </p>
+            ))}
+          </div>
         </fieldset>
         <div id='form-error' aria-atomic='true' aria-live='polite'>
-          {state.errors &&
+          {state.message &&
           <p className="mt-2 text-sm text-red-500" >
-            Missing Fields. Failed to ocreate invoices 
+            {state.message}
           </p>}
         </div>
       </div>
@@ -145,6 +145,12 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
           Cancel
         </Link>
         <Button type="submit">Create Invoice</Button>
+      </div>
+      <div id='form-error' aria-atomic='true' aria-live='polite'>
+        {state.message &&
+        <p className="mt-2 text-sm text-red-500" >
+          {state.message}
+        </p>}
       </div>
     </form>
   );
